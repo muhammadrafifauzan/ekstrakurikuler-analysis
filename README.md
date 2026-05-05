@@ -271,7 +271,7 @@ partisipasi ──► siswa          (LEFT JOIN by NIS)
 ## 📁 Struktur Repositori
 
 ```
-📦 ekskul-coding-jakarta/
+📦 dataset coding ekskul jakarta/
  ├── 📂 data/
  │   ├── raw/
  │   │   ├── siswa.csv
