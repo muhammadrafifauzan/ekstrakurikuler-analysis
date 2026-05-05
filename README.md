@@ -152,21 +152,17 @@ P0059,20240059,EK007,2023/2024,Ganjil,16,15,93.75,94.85
 
 🔗 **[Lihat Dashboard Interaktif](https://datastudio.google.com/reporting/ab125de5-f553-4ce3-a790-caa94b18d0b4)**
 
-Dashboard mencakup **10 halaman analisis**:
+Dashboard mencakup **Informasi Utama Sebagai Berikut**:
 
 | # | Sheet / Tab | Insight Utama |
 |---|-------------|---------------|
-| 1 | **Multi-Ekskul** | Siswa yang mengikuti lebih dari 1 kegiatan coding |
-| 2 | **Performa Instruktur** | Ranking instruktur berdasarkan nilai & kehadiran siswa |
+| 1 | **Total Siswa** | Total siswa yang mengikuti Ekstrakurikuler Coding |
+| 2 | **Average Nilai & Kehadiran Siswa** |Rata-rata nilai & kehadiran siswa |
 | 3 | **Top 10 Siswa** | Siswa berprestasi dengan nilai akhir tertinggi |
 | 4 | **Wilayah Jakarta** | Sebaran partisipasi per kota administrasi |
 | 5 | **Tren Semester** | Perkembangan jumlah peserta & nilai dari waktu ke waktu |
 | 6 | **Kelas & Gender** | Distribusi partisipasi berdasarkan kelas & jenis kelamin |
-| 7 | **Data Ekstrakurikuler** | Statistik per jenis ekskul (nilai rata-rata, kehadiran) |
-| 8 | **Cek Kehadiran** | Validasi rentang persentase kehadiran (min/max/avg) |
-| 9 | **Unik Gender** | Pengecekan distribusi gender dalam dataset |
-| 10 | **Cek Null** | Audit kualitas data — deteksi nilai kosong |
-
+| 7 | **Data Ekstrakurikuler** | Statistik per jenis ekskul & jumlah penerbitan sertifikat |
 ---
 
 ## 🗄️ SQL Query — `EkskulCodingAnalyst.sql`
@@ -264,8 +260,7 @@ partisipasi ──► siswa          (LEFT JOIN by NIS)
 
 | Kategori | Tools |
 |----------|-------|
-| **Data Preparation** | Python (Pandas, NumPy) |
-| **Data Cleaning** | Python, Excel |
+| **Data Cleaning** | Excel |
 | **Query & Analisis** | Google BigQuery (SQL) |
 | **Visualization** | Google Looker Studio |
 | **Version Control** | Git & GitHub |
@@ -287,12 +282,9 @@ partisipasi ──► siswa          (LEFT JOIN by NIS)
  │       └── Data_Dashboard_Looker_Studio.xlsx
  ├── 📂 sql/
  │   └── EkskulCodingAnalyst.sql       # Query BigQuery lengkap + VIEW dashboard
- ├── 📂 notebooks/
- │   └── exploratory_analysis.ipynb    # (coming soon)
  ├── 📂 dashboard/
- │   └── screenshot_dashboard.png
+ │   └── analisa_ekskul_coding.pdf
  ├── 📄 README.md
- └── 📄 data_dictionary.md             # (coming soon)
 ```
 
 ---
@@ -303,37 +295,6 @@ partisipasi ──► siswa          (LEFT JOIN by NIS)
 ```bash
 git clone https://github.com/username/ekskul-coding-jakarta.git
 cd ekskul-coding-jakarta
-```
-
-### Load Data dengan Python
-```python
-import pandas as pd
-
-# Load semua tabel
-siswa        = pd.read_csv('data/raw/siswa.csv')
-ekskul       = pd.read_csv('data/raw/ekstrakurikuler.csv')
-instruktur   = pd.read_csv('data/raw/instruktur.csv')
-partisipasi  = pd.read_csv('data/raw/partisipasi.csv')
-
-# Join tabel utama
-df = partisipasi.merge(siswa, on='NIS') \
-                .merge(ekskul, on='Kode_EK') \
-                .merge(instruktur, on='ID_Instruktur')
-
-print(df.shape)       # (251, ~25 kolom)
-print(df.head())
-```
-
-### Quick Stats
-```python
-# Rata-rata nilai per ekstrakurikuler
-df.groupby('Nama_Ekstrakurikuler')['Nilai_Akhir'].mean().sort_values(ascending=False)
-
-# Distribusi siswa per wilayah
-siswa['Kota_Wilayah'].value_counts()
-
-# Korelasi kehadiran vs nilai
-df[['Pct_Kehadiran', 'Nilai_Akhir']].corr()
 ```
 
 ---
@@ -348,9 +309,9 @@ Saya adalah seorang **guru ekstrakurikuler coding** di sekolah dasar Jakarta yan
 - 🎯 Tujuan: Berkontribusi pada peningkatan kualitas pendidikan berbasis data
 
 **Connect with me:**
-- 💼 [LinkedIn](https://linkedin.com/in/username)
-- 🐙 [GitHub](https://github.com/username)
-- 📧 email@example.com
+- 💼 [LinkedIn](https://linkedin.com/in/muhammad-rafi-fauzan)
+- 🐙 [GitHub](https://github.com/muhammadrafifauzan)
+- 📧 mrfauzan2000@gmai.com
 
 ---
 
